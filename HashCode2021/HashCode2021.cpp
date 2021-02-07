@@ -6,10 +6,14 @@
 #include <iostream>
 #include <fstream>
 
+#include <windows.h>
+#include <string>
+#include <iostream>
 
 typedef uint32_t Ingredient;
 typedef uint64_t Score;
 
+using namespace std;
 
 class IngredientsMapper {
     std::unordered_map<std::string, Ingredient> table;
@@ -111,14 +115,10 @@ void brutal(unsigned T2, unsigned T3, unsigned T4) {
 }
 */
 
-
 int main(int argc, char* argv[]) {
     IngredientsMapper& mapper = IngredientsMapper::get();
 
-    //if (argc < 2)
-        //return errexit("No filename given");
-
-    std::ifstream infile("Input.txt");
+    std::ifstream infile("../Input.txt");
     if (!infile.is_open())
         return errexit("Cannot open file");
 
@@ -144,8 +144,6 @@ int main(int argc, char* argv[]) {
     }
 
     std::cout << "Read " << M << " pizzas, totally " << mapper.count() << " ingredients.\n";
-
-
 
     return EXIT_SUCCESS;
 }
